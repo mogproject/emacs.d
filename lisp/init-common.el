@@ -14,12 +14,18 @@
 (global-linum-mode t)
 (setq linum-format "%4d ")
 
+;; highlight parenthes
+(show-paren-mode 1)
+
 ;; disable final newline insertion
 (setq require-final-newline nil)
 
 ;; tab settings
 (setq-default tab-width 4)
 (setq-default indent-tabs-mode nil)
+
+;; scroll settings
+(setq scroll-error-top-bottom t)
 
 ;; electric indent mode (Emacs >=24.4)
 ;(electric-indent-mode -1)

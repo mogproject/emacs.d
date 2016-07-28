@@ -2,6 +2,9 @@
 ;; Window Options
 ;;----------------------------------------------------------------------------
 
+;; disable startup screen
+(setq inhibit-startup-screen t)
+
 ;; window size
 (setq default-frame-alist
       (append (list

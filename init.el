@@ -29,5 +29,9 @@
 (if *is-window* (require 'init-window))
 (if *is-mac* (require 'init-mac))
 
+(require 'init-package)
+;(require 'init-completion)
+(require 'init-cc)
+
 
 (provide 'init)
