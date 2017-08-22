@@ -42,8 +42,8 @@
 (if *is-mac* (require 'init-mac))
 
 (require 'init-package)
-;(require 'init-cc)
-
+(require 'init-cc)
+(require 'init-java)
 
 (provide 'init)
 
