@@ -60,13 +60,13 @@
   :init
   (add-hook 'c-mode-common-hook 'flycheck-mode)
   :config
-  (use-package flycheck-pos-tip)
+;  (use-package flycheck-pos-tip)
   (use-package flycheck-irony)
 ;  (use-package flycheck-google-cpplint)
   (setq flycheck-display-errors-delay 0.5
         flycheck-display-errors-function #'flycheck-pos-tip-error-messages
         )
-  (flycheck-irony-setup)
+;  (flycheck-irony-setup)
 ;  (flycheck-add-next-checker 'c/c++-cppcheck
 ;                             '(warning . c/c++-googlelint))
   :commands

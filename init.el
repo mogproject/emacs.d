@@ -26,6 +26,11 @@
 (defconst *is-window* (boundp 'window-system))
 
 ;;----------------------------------------------------------------------------
+;; Colors
+;;----------------------------------------------------------------------------
+(set-face-attribute 'region nil :foreground "#ffffff" :background "#006600")
+
+;;----------------------------------------------------------------------------
 ;; Initialize
 ;;----------------------------------------------------------------------------
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
@@ -37,7 +42,7 @@
 (if *is-mac* (require 'init-mac))
 
 (require 'init-package)
-(require 'init-cc)
+;(require 'init-cc)
 
 
 (provide 'init)
@@ -68,3 +73,21 @@
 (setq interprogram-cut-function 'paste-to-osx)
 (setq interprogram-paste-function 'copy-from-osx)
 
+;(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+; '(package-selected-packages
+;   (quote
+;    (jedi flycheck-pos-tip flycheck-irony use-package flycheck company-irony))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(fa-face-hint ((t (:background "#3f3f3f" :foreground "#ffffff"))))
+ '(fa-face-hint-bold ((t (:background "#3f3f3f" :weight bold))))
+ '(fa-face-semi ((t (:background "#3f3f3f" :foreground "#ffffff" :weight bold))))
+ '(fa-face-type ((t (:inherit (quote font-lock-type-face) :background "#3f3f3f"))))
+ '(fa-face-type-bold ((t (:inherit (quote font-lock-type-face) :background "#999999" :bold t)))))
