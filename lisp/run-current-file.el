@@ -43,6 +43,8 @@ Version 2017-07-31"
     (setq $fSuffix (file-name-extension $fname))
     (setq $prog-name (cdr (assoc $fSuffix $suffix-map)))
     (setq $cmd-str (concat $prog-name " \""   $fname "\""))
+    (setq $compile-buffer "*compile*")
+    (setq $output-buffer "*output*")
     (cond
      ((string-equal $fSuffix "el") (load $fname))
      ((string-equal $fSuffix "go")
@@ -52,11 +54,31 @@ Version 2017-07-31"
      ((string-equal $fSuffix "java")
       (setq $class-file-name (concat (file-name-sans-extension $fname) ".class"))
       (progn
+        (delete-other-windows)
+
         (shell-command (format "rm -f \"%s\"" $class-file-name))
-        (shell-command $cmd-str "*run-current-file output*" )
+        (split-window-right)
+        (windmove-right)
+        (when (get-buffer $compile-buffer) (kill-buffer $compile-buffer))
+        (find-file $compile-buffer)
+
+        (split-window-below)
+        (when (get-buffer $output-buffer) (kill-buffer $output-buffer))
+        (find-file $output-buffer)
+      
+        (with-output-to-temp-buffer $compile-buffer
+          (shell-command $cmd-str $compile-buffer)
+          (pop-to-buffer $compile-buffer nil t)
+          )
         (when (file-exists-p $class-file-name)
-          (shell-command
-            (format "java %s" (file-name-sans-extension (file-name-nondirectory $fname)))))))
+          (with-output-to-temp-buffer $output-buffer
+            (shell-command
+              (format "java %s" (file-name-sans-extension (file-name-nondirectory $fname))) $output-buffer)
+            (pop-to-buffer $output-buffer nil t)
+            )
+        ))
+        (windmove-left)
+      )
      (t (if $prog-name
             (progn
               (message "Running…")

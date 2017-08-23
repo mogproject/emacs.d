@@ -52,21 +52,6 @@
 ;; Run current file
 ;;----------------------------------------------------------------------------
 (global-set-key (kbd "M-RET") 'run-current-file)
-(global-set-key (kbd "M-S-RET") 'compile-current-file)
-
-;; define window setup
-(defun split-dev-output ()
-  (interactive)
-  (delete-other-windows)
-  (split-window-right)
-  (windmove-right)
-  (find-file "*run-current-file output*")
-  (split-window-below)
-  (find-file "*Shell Command Output*")
-  (windmove-left)
-)
-
-(global-set-key (kbd "C-c C-f") 'split-dev-output)
 
 ;;----------------------------------------------------------------------------
 ;; JavaScript
