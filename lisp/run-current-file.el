@@ -30,7 +30,7 @@ Version 2017-07-31"
            ("vbs" . "cscript")
            ("tex" . "pdflatex")
            ("latex" . "pdflatex")
-           ("java" . "javac")
+           ("java" . "javac -source 1.8 -target 1.8 -deprecation")
            ;; ("pov" . "/usr/local/bin/povray +R2 +A0.1 +J1.2 +Am2 +Q9 +H480 +W640")
            ))
         $fname
@@ -50,10 +50,13 @@ Version 2017-07-31"
         (gofmt)
         (shell-command $cmd-str "*run-current-file output*" )))
      ((string-equal $fSuffix "java")
+      (setq $class-file-name (concat (file-name-sans-extension $fname) ".class"))
       (progn
+        (shell-command (format "rm -f \"%s\"" $class-file-name))
         (shell-command $cmd-str "*run-current-file output*" )
-        (shell-command
-         (format "java %s" (file-name-sans-extension (file-name-nondirectory $fname))))))
+        (when (file-exists-p $class-file-name)
+          (shell-command
+            (format "java %s" (file-name-sans-extension (file-name-nondirectory $fname)))))))
      (t (if $prog-name
             (progn
               (message "Running…")
