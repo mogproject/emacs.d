@@ -44,8 +44,15 @@
 (require 'init-package)
 (require 'init-cc)
 (require 'init-java)
+(require 'run-current-file)
 
 (provide 'init)
+
+;;----------------------------------------------------------------------------
+;; Run current file
+;;----------------------------------------------------------------------------
+(global-set-key (kbd "M-RET") 'run-current-file)
+(global-set-key (kbd "M-S-RET") 'compile-current-file)
 
 ;;----------------------------------------------------------------------------
 ;; JavaScript
