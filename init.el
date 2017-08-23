@@ -97,3 +97,4 @@
  '(fa-face-semi ((t (:background "#3f3f3f" :foreground "#ffffff" :weight bold))))
  '(fa-face-type ((t (:inherit (quote font-lock-type-face) :background "#3f3f3f"))))
  '(fa-face-type-bold ((t (:inherit (quote font-lock-type-face) :background "#999999" :bold t)))))
+

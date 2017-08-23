@@ -30,5 +30,8 @@
 ;; electric indent mode (Emacs >=24.4)
 ;(electric-indent-mode -1)
 
+; auto complete
+(ac-config-default)
+(global-auto-complete-mode t)
 
 (provide 'init-common)

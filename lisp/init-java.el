@@ -2,8 +2,12 @@
 ;; Java Settings
 ;;----------------------------------------------------------------------------
 
-(custom-set-variables
- '(jdee-server-dir "/Users/you/.emacs.d/jdee-server"))
+(require 'eclim)
+(global-eclim-mode)
+
+;(add-to-list 'ac-modes 'jde-mode)
+
+;(global-flycheck-mode -1)
 
 (provide 'init-java)
 
